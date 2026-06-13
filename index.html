@@ -495,6 +495,15 @@
       section { padding: 3.5rem 1.25rem; }
       .hero { padding: 5rem 1.25rem 4rem; }
     }
+
+    @media (max-width: 720px) {
+      #oandm .section-inner > div { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      #oandm .section-inner > div > div:last-child { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      #oandm .section-inner > div > div:last-child { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -505,6 +514,7 @@
     <ul class="nav-links">
       <li><a href="#why">Why Us</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#oandm">O&amp;M</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="https://wa.me/919885859676?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20solar%20project%20in%20Coastal%20AP." class="nav-cta" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.556 4.112 1.528 5.836L.057 23.3a.75.75 0 00.927.927l5.464-1.471A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.754-.493-5.335-1.358l-.383-.216-3.246.875.875-3.246-.216-.383A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
@@ -649,6 +659,42 @@
     </div>
   </section>
 
+  <!-- O&M CALLOUT -->
+  <section id="oandm" style="background: var(--navy); padding: 5rem 2rem;">
+    <div class="section-inner">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+        <div>
+          <p class="section-label" style="color: rgba(244,162,37,0.7);">Solar O&amp;M</p>
+          <h2 class="section-title" style="color: var(--white); font-size: clamp(2rem, 4vw, 3rem);">Already Have Solar Installed?<br><span style="color: var(--amber);">We Maintain It.</span></h2>
+          <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75; margin: 1.2rem 0 2rem;">Every system installed in the last 3–5 years in Coastal AP is now due for serious maintenance. Dust accumulation alone can cut output by 20–30%. Most installers have moved on. We haven't — and we're local.</p>
+          <a href="https://wa.me/919885859676?text=Hi%2C%20I%27d%20like%20to%20get%20an%20O%26M%20quote%20for%20my%20installed%20solar%20system." class="btn-primary" target="_blank" rel="noopener">Get an O&amp;M Quote</a>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.6rem;">🧹</div>
+            <h4 style="color: var(--amber); font-size: 0.95rem; margin-bottom: 0.4rem;">Panel Cleaning</h4>
+            <p style="color: rgba(255,255,255,0.55); font-size: 0.82rem; line-height: 1.55;">Scheduled dry and wet cleaning to restore full panel output. Coastal dust and sea salt deposits handled specifically.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.6rem;">📊</div>
+            <h4 style="color: var(--amber); font-size: 0.95rem; margin-bottom: 0.4rem;">Performance Monitoring</h4>
+            <p style="color: rgba(255,255,255,0.55); font-size: 0.82rem; line-height: 1.55;">Monthly generation reports. Identify underperforming strings, inverter faults, and shading issues before they compound.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.6rem;">⚡</div>
+            <h4 style="color: var(--amber); font-size: 0.95rem; margin-bottom: 0.4rem;">Inverter &amp; Wiring Health</h4>
+            <p style="color: rgba(255,255,255,0.55); font-size: 0.82rem; line-height: 1.55;">Bi-annual inverter checks, DC/AC wiring inspection, and earthing verification to keep the system safe and efficient.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.6rem;">🛠️</div>
+            <h4 style="color: var(--amber); font-size: 0.95rem; margin-bottom: 0.4rem;">On-Call Fault Response</h4>
+            <p style="color: rgba(255,255,255,0.55); font-size: 0.82rem; line-height: 1.55;">Rajahmundry-based team. Same-district response within 24 hours. Cross-district within 48 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-inner">
@@ -662,6 +708,7 @@
             Message on WhatsApp
           </a>
           <div class="contact-meta">
+            <strong>Contact</strong> Chidvilas Dadi · +91 98858 59676<br>
             <strong>Based in</strong> Rajahmundry, East Godavari<br>
             <strong>Serving</strong> East Godavari · West Godavari · Kakinada · Konaseema<br>
             <strong>DISCOM</strong> APEPDCL — All Divisions
