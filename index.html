@@ -1,61 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GC Solar Projects | B2B Solar Engineering in Coastal AP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root { --navy: #070f24; --solar-amber: #f4a225; }
-        body { margin: 0; font-family: 'DM Sans', sans-serif; background: #fff; color: var(--navy); }
-        h1, h2 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; }
-        header { background: var(--navy); padding: 1.5rem; color: #fff; display: flex; justify-content: space-between; align-items: center; }
-        header h2 { margin: 0; font-size: 1.8rem; color: var(--solar-amber); }
-        .hero { padding: 6rem 2rem; text-align: center; background: linear-gradient(rgba(7,15,36,0.85), rgba(7,15,36,0.85)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80'); background-size: cover; color: #fff; }
-        .hero h1 { font-size: 3.5rem; margin: 0 0 1rem 0; color: var(--solar-amber); }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto; }
-        .section { padding: 4rem 2rem; max-width: 1000px; margin: auto; }
-        .btn { background: var(--solar-amber); color: var(--navy); padding: 1rem 2rem; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .card { border: 1px solid #eee; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card h3 { color: var(--solar-amber); margin-top: 0; }
-        form input, form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GC Solar Projects | B2B Solar EPC Partner — Coastal Andhra Pradesh</title>
+  <meta name="description" content="GC Solar Projects is a B2B solar EPC subcontractor based in Rajahmundry, specializing in commercial and industrial solar execution, APEPDCL net-metering liaisoning, and O&M across East Godavari, West Godavari, Kakinada, and Konaseema.">
+  <meta name="keywords" content="solar installation subcontractor andhra pradesh, industrial solar execution godavari, solar commissioning partner AP, B2B solar execution East Godavari, APEPDCL net metering, solar EPC Rajahmundry">
+  <link rel="canonical" href="https://gcsolarprojects.com/">
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "GC Solar Projects",
+    "image": "https://gcsolarprojects.com/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rajahmundry",
+      "addressRegion": "Andhra Pradesh",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["East Godavari", "West Godavari", "Kakinada", "Konaseema"],
+    "url": "https://gcsolarprojects.com",
+    "description": "B2B solar EPC subcontractor specializing in commercial and industrial execution, APEPDCL net-metering liaisoning, and O&M in Coastal Andhra Pradesh."
+  }
+  </script>
+
+  <style>
+    :root {
+      --navy: #070f24;
+      --navy-mid: #0d1e42;
+      --amber: #f4a225;
+      --amber-light: #fdb94a;
+      --white: #ffffff;
+      --off-white: #f7f8fa;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--amber);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-logo span { color: var(--white); font-weight: 600; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: #25D366;
+      color: var(--white) !important;
+      padding: 0.5rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #1ebe5a !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, rgba(7,15,36,0.92) 0%, rgba(7,15,36,0.78) 100%),
+                  url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1800&q=80') center/cover no-repeat;
+      padding: 7rem 2rem 6rem;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(244,162,37,0.15);
+      border: 1px solid rgba(244,162,37,0.4);
+      color: var(--amber);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .hero h1 span { color: var(--amber); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 580px;
+      margin: 1.2rem auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--navy);
+      padding: 0.85rem 2rem;
+      font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+
+    .section-inner { max-width: 1040px; margin: auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--off-white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.8rem;
+      border-top: 3px solid var(--amber);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .why-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .why-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      color: var(--navy);
+    }
+
+    .why-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--navy); }
+    #services .section-title { color: var(--white); }
+    #services .section-body { color: rgba(255,255,255,0.6); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .service-card:hover {
+      background: rgba(244,162,37,0.07);
+      border-color: rgba(244,162,37,0.3);
+    }
+
+    .service-card .svc-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgba(244,162,37,0.25);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      color: var(--amber);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--white); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .project-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .project-thumb .capacity {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--amber);
+    }
+
+    .project-thumb .type-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(244,162,37,0.15);
+      border: 1px solid rgba(244,162,37,0.3);
+      color: var(--amber);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .project-info { padding: 1.4rem; }
+
+    .project-info h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      color: var(--navy);
+    }
+
+    .project-info .location {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-tags span {
+      background: var(--off-white);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--off-white); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .contact-left h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+
+    .contact-left p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #25D366;
+      color: var(--white);
+      padding: 0.85rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .whatsapp-btn:hover { background: #1ebe5a; }
+
+    .contact-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .contact-meta strong { color: var(--navy); }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--navy);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+
+    form textarea { resize: vertical; min-height: 120px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: rgba(255,255,255,0.8); }
+
+    footer .footer-districts {
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links li:not(:last-child) { display: none; }
+      section { padding: 3.5rem 1.25rem; }
+      .hero { padding: 5rem 1.25rem 4rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h2>GC Solar Projects</h2>
-        <span style="font-weight: 500;">Coastal AP</span>
-    </header>
 
-    <section class="hero">
-        <h1>Local Engineering Muscle.<br>On-Ground Execution.</h1>
-        <p>B2B Solar EPC partner for commercial and industrial projects in Kakinada, East &amp; West Godavari, and Konaseema.</p>
-        <a href="#contact" class="btn">Enquire Now</a>
-    </section>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">GC Solar <span>Projects</span></a>
+    <ul class="nav-links">
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://wa.me/919885859676?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20solar%20project%20in%20Coastal%20AP." class="nav-cta" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.556 4.112 1.528 5.836L.057 23.3a.75.75 0 00.927.927l5.464-1.471A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.754-.493-5.335-1.358l-.383-.216-3.246.875.875-3.246-.216-.383A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp Us
+      </a></li>
+    </ul>
+  </nav>
 
-    <section class="section">
-        <h2>Our Core Capabilities</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>DISCOM Liaisoning</h3>
-                <p>Navigating government approvals, grid connectivity, and DISCOM policy clearances with local administrative expertise.</p>
-            </div>
-            <div class="card">
-                <h3>Local Engineering Muscle</h3>
-                <p>On-ground execution and structural design engineered specifically to withstand the unique coastal environment of Andhra Pradesh.</p>
-            </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">B2B Solar EPC Partner · Coastal Andhra Pradesh</div>
+    <h1>The Execution Partner<br><span>Your Projects Need On Ground</span></h1>
+    <p class="hero-sub">We handle APEPDCL liaisoning, coastal structural engineering, and end-to-end project execution — so your solar projects in Coastal AP don't stall.</p>
+    <div class="hero-chips">
+      <span class="chip">East &amp; West Godavari</span>
+      <span class="chip">Kakinada</span>
+      <span class="chip">Konaseema</span>
+      <span class="chip">APEPDCL Net-Metering</span>
+      <span class="chip">Commercial &amp; Industrial</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Discuss a Project</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="section-inner">
+      <p class="section-label">Why Partner With Us</p>
+      <h2 class="section-title">What We Bring to Your Project</h2>
+      <p class="section-body">Most EPC projects in Coastal AP slow down at DISCOM approvals or get re-engineered for coastal load conditions. We've built our entire operation around these two bottlenecks.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon">🏛️</div>
+          <h3>APEPDCL Relationships</h3>
+          <p>Active working relationships with APEPDCL officials across East &amp; West Godavari. Net-metering approvals, grid connectivity, and documentation handled with zero friction.</p>
         </div>
-    </section>
+        <div class="why-card">
+          <div class="icon">🌊</div>
+          <h3>Coastal Engineering Expertise</h3>
+          <p>Structural designs engineered for coastal wind loads and salt-spray corrosion. Mounting systems and hardware selected specifically for Andhra Pradesh's coastal climate.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">📍</div>
+          <h3>Rajahmundry-Based Team</h3>
+          <p>Permanently stationed in East Godavari. No mobilization delays. Site surveys, contractor management, and commissioning executed with a team that knows the terrain.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">🔁</div>
+          <h3>Survey to O&amp;M</h3>
+          <p>Shadow mapping and layout optimization at the front end. Annual O&amp;M contracts at the back end. One partner for the full project lifecycle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="section" style="background: #f4f4f4; border-radius: 8px;">
-        <h2>Partner With Us</h2>
-        <form name="contact" method="POST" data-netlify="true">
-            <input type="text" name="name" placeholder="Business Name" required>
-            <input type="email" name="email" placeholder="Contact Email" required>
-            <textarea name="message" placeholder="Describe your solar requirements" rows="5" required></textarea>
-            <button type="submit" class="btn" style="border:none; cursor:pointer; width:100%;">Submit Inquiry</button>
-        </form>
-    </section>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label" style="color: rgba(244,162,37,0.7);">What We Do</p>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-body">Designed for solar developers, EPC prime contractors, and large C&amp;I owners who need a reliable ground execution partner in Coastal AP.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="svc-num">01</div>
+          <h3>EPC Subcontracting</h3>
+          <p>Full execution for commercial and industrial rooftop projects — from survey and BOM to installation, commissioning, and handover. We take delivery responsibility so you don't have to chase ground teams.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">02</div>
+          <h3>APEPDCL Liaisoning</h3>
+          <p>End-to-end DISCOM approvals for net-metering and grid connectivity across East &amp; West Godavari divisions. Single-window handling of technical feasibility, documentation, and inspection scheduling.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">03</div>
+          <h3>O&amp;M Contracts</h3>
+          <p>Annual maintenance contracts for installed capacity — scheduled cleaning, inverter health checks, generation monitoring, and on-call fault response. SLA-backed turnaround times.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-num">04</div>
+          <h3>Shadow Mapping &amp; Layout Design</h3>
+          <p>Site assessment and panel layout optimization for maximum annual yield. Accounts for coastal weather patterns, shading from adjacent structures, and DISCOM-specific technical requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">Track Record</p>
+      <h2 class="section-title">Projects Executed</h2>
+      <p class="section-body">A sample of commercial and industrial projects completed across Coastal AP. Reach out for a full project list.</p>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-thumb">
+            <span class="type-badge">Industrial Rooftop</span>
+            <span class="capacity">250 kW</span>
+          </div>
+          <div class="project-info">
+            <h3>Industrial Unit — Kakinada</h3>
+            <p class="location">Kakinada Port Area, East Godavari</p>
+            <div class="project-tags">
+              <span>EPC + Liaisoning</span>
+              <span>APEPDCL Net-Metering</span>
+              <span>Completed</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb">
+            <span class="type-badge">Commercial Rooftop</span>
+            <span class="capacity">100 kW</span>
+          </div>
+          <div class="project-info">
+            <h3>Commercial Complex — Rajahmundry</h3>
+            <p class="location">Rajahmundry, East Godavari</p>
+            <div class="project-tags">
+              <span>EPC Execution</span>
+              <span>Coastal Structural Design</span>
+              <span>Completed</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb">
+            <span class="type-badge">Agricultural Pumpset</span>
+            <span class="capacity">7.5 kW</span>
+          </div>
+          <div class="project-info">
+            <h3>Farm Pumpset Solarization — Konaseema</h3>
+            <p class="location">Amalapuram, Konaseema District</p>
+            <div class="project-tags">
+              <span>Survey &amp; Design</span>
+              <span>Installation</span>
+              <span>O&amp;M Contract</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-layout">
+        <div class="contact-left">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-title">Let's Talk About Your Project</h2>
+          <p>We work with solar developers, EPC companies, and large commercial &amp; industrial owners. If you have a project in Coastal AP, let's connect on WhatsApp or drop us a brief below.</p>
+          <a href="https://wa.me/919885859676?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20solar%20project%20in%20Coastal%20AP." class="whatsapp-btn" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.556 4.112 1.528 5.836L.057 23.3a.75.75 0 00.927.927l5.464-1.471A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.754-.493-5.335-1.358l-.383-.216-3.246.875.875-3.246-.216-.383A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Message on WhatsApp
+          </a>
+          <div class="contact-meta">
+            <strong>Based in</strong> Rajahmundry, East Godavari<br>
+            <strong>Serving</strong> East Godavari · West Godavari · Kakinada · Konaseema<br>
+            <strong>DISCOM</strong> APEPDCL — All Divisions
+          </div>
+        </div>
+        <div class="contact-right">
+          <form name="contact" method="POST" data-netlify="true">
+            <input type="text" name="company" placeholder="Company / Organisation" required>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Work Email" required>
+            <input type="tel" name="phone" placeholder="Phone / WhatsApp Number">
+            <select name="project_type">
+              <option value="" disabled selected>Project Type</option>
+              <option>Industrial Rooftop (&gt;100 kW)</option>
+              <option>Commercial Rooftop (10–100 kW)</option>
+              <option>Ground-Mount / Utility</option>
+              <option>O&amp;M Contract for Existing System</option>
+              <option>APEPDCL Liaisoning Only</option>
+              <option>Other</option>
+            </select>
+            <textarea name="message" placeholder="Brief project description — location, capacity, timeline" rows="4" required></textarea>
+            <button type="submit" class="btn-primary" style="width:100%; font-size:1rem;">Send Brief</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>GC Solar Projects</strong> — B2B Solar EPC Partner, Coastal Andhra Pradesh
+    <div class="footer-districts">Rajahmundry · East Godavari · West Godavari · Kakinada · Konaseema · APEPDCL</div>
+    <div style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.4;">© 2026 GC Solar Projects. All rights reserved.</div>
+  </footer>
+
 </body>
 </html>
