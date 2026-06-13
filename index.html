@@ -609,52 +609,8 @@
       <p class="section-label">Track Record</p>
       <h2 class="section-title">Projects Executed</h2>
       <p class="section-body">A sample of commercial and industrial projects completed across Coastal AP. Reach out for a full project list.</p>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-thumb">
-            <span class="type-badge">Industrial Rooftop</span>
-            <span class="capacity">250 kW</span>
-          </div>
-          <div class="project-info">
-            <h3>Industrial Unit — Kakinada</h3>
-            <p class="location">Kakinada Port Area, East Godavari</p>
-            <div class="project-tags">
-              <span>EPC + Liaisoning</span>
-              <span>APEPDCL Net-Metering</span>
-              <span>Completed</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-thumb">
-            <span class="type-badge">Commercial Rooftop</span>
-            <span class="capacity">100 kW</span>
-          </div>
-          <div class="project-info">
-            <h3>Commercial Complex — Rajahmundry</h3>
-            <p class="location">Rajahmundry, East Godavari</p>
-            <div class="project-tags">
-              <span>EPC Execution</span>
-              <span>Coastal Structural Design</span>
-              <span>Completed</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-thumb">
-            <span class="type-badge">Agricultural Pumpset</span>
-            <span class="capacity">7.5 kW</span>
-          </div>
-          <div class="project-info">
-            <h3>Farm Pumpset Solarization — Konaseema</h3>
-            <p class="location">Amalapuram, Konaseema District</p>
-            <div class="project-tags">
-              <span>Survey &amp; Design</span>
-              <span>Installation</span>
-              <span>O&amp;M Contract</span>
-            </div>
-          </div>
-        </div>
+      <div id="projects-grid" class="projects-grid">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Loading projects…</p>
       </div>
     </div>
   </section>
@@ -743,6 +699,56 @@
     <div class="footer-districts">Rajahmundry · East Godavari · West Godavari · Kakinada · Konaseema · APEPDCL</div>
     <div style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.4;">© 2026 GC Solar Projects. All rights reserved.</div>
   </footer>
+
+  <!-- Netlify Identity — handles email invite redirects -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+        }
+      });
+    }
+  </script>
+
+  <!-- Load projects from data/projects.json -->
+  <script>
+    fetch('/data/projects.json')
+      .then(r => r.json())
+      .then(data => {
+        const grid = document.getElementById('projects-grid');
+        if (!data.projects || !data.projects.length) {
+          grid.innerHTML = '<p style="color:var(--text-muted)">Projects coming soon.</p>';
+          return;
+        }
+        grid.innerHTML = data.projects.map(p => {
+          const thumb = p.image
+            ? `<div class="project-thumb" style="background: url('${p.image}') center/cover no-repeat;">
+                 <span class="type-badge">${p.type}</span>
+               </div>`
+            : `<div class="project-thumb">
+                 <span class="type-badge">${p.type}</span>
+                 <span class="capacity">${p.capacity}</span>
+               </div>`;
+          const tags = (p.scope || []).map(t => `<span>${t}</span>`).join('');
+          const statusTag = p.status ? `<span>${p.status}</span>` : '';
+          return `
+            <div class="project-card">
+              ${thumb}
+              <div class="project-info">
+                <h3>${p.title}</h3>
+                <p class="location">${p.location}</p>
+                <div class="project-tags">${tags}${statusTag}</div>
+              </div>
+            </div>`;
+        }).join('');
+      })
+      .catch(() => {
+        document.getElementById('projects-grid').innerHTML =
+          '<p style="color:var(--text-muted)">Projects coming soon.</p>';
+      });
+  </script>
 
 </body>
 </html>

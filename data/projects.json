@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "title": "Industrial Unit — Kakinada",
+      "capacity": "250 kW",
+      "type": "Industrial Rooftop",
+      "location": "Kakinada Port Area, East Godavari",
+      "scope": ["EPC + Liaisoning", "APEPDCL Net-Metering"],
+      "status": "Completed",
+      "image": ""
+    },
+    {
+      "title": "Commercial Complex — Rajahmundry",
+      "capacity": "100 kW",
+      "type": "Commercial Rooftop",
+      "location": "Rajahmundry, East Godavari",
+      "scope": ["EPC Execution", "Coastal Structural Design"],
+      "status": "Completed",
+      "image": ""
+    },
+    {
+      "title": "Farm Pumpset Solarization — Konaseema",
+      "capacity": "7.5 kW",
+      "type": "Agricultural / Farm",
+      "location": "Amalapuram, Konaseema District",
+      "scope": ["Survey & Design", "Installation", "O&M Contract"],
+      "status": "Completed",
+      "image": ""
+    }
+  ]
+}
