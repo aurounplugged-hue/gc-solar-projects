@@ -7,6 +7,8 @@
   <meta name="description" content="GC Solar Projects is a B2B solar EPC subcontractor based in Rajahmundry, specializing in commercial and industrial solar execution, APEPDCL net-metering liaisoning, and O&M across East Godavari, West Godavari, Kakinada, and Konaseema.">
   <meta name="keywords" content="solar installation subcontractor andhra pradesh, industrial solar execution godavari, solar commissioning partner AP, B2B solar execution East Godavari, APEPDCL net metering, solar EPC Rajahmundry">
   <link rel="canonical" href="https://gcsolarprojects.com/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -71,6 +73,9 @@
     }
 
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
@@ -78,6 +83,15 @@
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 3px;
+    }
+
+    .nav-logo-mark {
+      display: block;
+      width: 36px;
+      height: 36px;
+      background: var(--off-white);
+      border-radius: 2px;
+      padding: 4px;
     }
 
     .nav-logo span { color: rgba(255,255,255,0.65); font-weight: 500; }
@@ -516,7 +530,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">GC Solar <span>Projects</span></a>
+    <a href="#" class="nav-logo"><img class="nav-logo-mark" src="/images/logo-mark-96.png" alt="GC Solar">GC Solar <span>Projects</span></a>
     <ul class="nav-links">
       <li><a href="#why">Why Us</a></li>
       <li><a href="#services">Services</a></li>
