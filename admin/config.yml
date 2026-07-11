@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: aurounplugged-hue/gc-solar-projects
   branch: master
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 media_folder: "images/projects"
 public_folder: "/images/projects"
