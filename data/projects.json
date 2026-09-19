@@ -36,6 +36,16 @@
       "status": "Completed",
       "date": "2026-09-02",
       "image": "/images/projects/kovvur-3kw-rooftop.jpeg"
+    },
+    {
+      "title": "3 kW Rooftop Installation — Tadepalligudem",
+      "capacity": "3 kW",
+      "type": "Rooftop Solar",
+      "location": "Tadepalligudem, West Godavari",
+      "scope": ["Rooftop Installation", "Structural Mounting", "Commissioning"],
+      "status": "Completed",
+      "date": "2026-09-11",
+      "image": "/images/projects/tadepalligudem-3kw-rooftop.jpeg"
     }
   ]
 }
