@@ -26,6 +26,16 @@
       "scope": ["Survey & Design", "Installation", "O&M Contract"],
       "status": "Completed",
       "image": ""
+    },
+    {
+      "title": "3 kW Rooftop Installation — Kovvur",
+      "capacity": "3 kW",
+      "type": "Rooftop Solar",
+      "location": "Kovvur, East Godavari",
+      "scope": ["Rooftop Installation", "Deye Inverter", "AC/DC Distribution"],
+      "status": "Completed",
+      "date": "2026-09-02",
+      "image": "/images/projects/kovvur-3kw-rooftop.jpeg"
     }
   ]
 }
