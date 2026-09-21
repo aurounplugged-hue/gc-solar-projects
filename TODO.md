@@ -1,6 +1,6 @@
 # GC Solar Projects TODO
 
-Last updated: September 20, 2026
+Last updated: September 21, 2026
 
 ## GC Solar B2B Positioning
 - [ ] Reposition from retail rooftop lead generation to B2B Execution-as-a-Service for national and regional solar EPC primes in Coastal Andhra.
@@ -15,6 +15,8 @@ Last updated: September 20, 2026
 - [ ] Publish 3-5 quantified commercial, industrial, hospital, and manufacturing case studies with photos and GC Solar responsibilities.
 - [ ] Verify Kovvur and Tadepalligudem details and evidence before publication.
 - [ ] Define a minimum evidence threshold and evidence register for public claims.
+- [ ] Procure SLD / GA drawings from Chiddu for verified technical proof.
+- [ ] Refine the hero visual pivot around the Tenali multi-stage progression.
 
 ## Productized Service Catalog
 - [ ] Define Execution Fee pricing in INR per Watt, including scope, assumptions, exclusions, and complexity adjustments.
@@ -23,6 +25,7 @@ Last updated: September 20, 2026
 - [ ] Add an EPC-prime partner qualification flow and decide whether pricing is public, indicative, or quote-based.
 
 ## Technical and Repo Hygiene
+- [x] Complete the WhatsApp lead generation form and verify its redirect flow.
 - [ ] Fix the /projects 404 route on gcsolarprojects.com and test direct navigation and refresh.
 - [ ] Add project-status taxonomy, empty/error states, and remove placeholder data.
 - [ ] Test production links, cards, images, responsive layouts, and deployment behavior.
