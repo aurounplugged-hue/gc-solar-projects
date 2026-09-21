@@ -1,7 +1,7 @@
 name: Verify site integrity
 on:
   push:
-    branches: [master]
+    branches: [master, ci-integrity-guardrails]
   pull_request:
     branches: [master]
 permissions:
