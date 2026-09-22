@@ -2,6 +2,12 @@
 
 This workflow is required for uploading JPEG images to `gc-solar-projects`. It prevents binary data from being converted into UTF-8 text and silently corrupted.
 
+## Explicit source-of-truth rule
+
+> Never use an image already in the repository as the source of truth when replacing a corrupted image. The source of truth is the original image supplied by Gopi.
+
+The repository copy may already be corrupted. Re-uploading that copy as if it were clean binary only reproduces the corruption and creates a false fix. Always obtain the original image directly from Gopi via Telegram or the original media source.
+
 ## Why ordinary text handling corrupts images
 
 JPEGs are arbitrary bytes, not UTF-8 text. If a binary file is read, printed, or passed through a text-oriented buffer, invalid UTF-8 sequences can be replaced with the Unicode replacement character U+FFFD. Its UTF-8 bytes are `EF BF BD`; in base64 this appears as `77+9`.
@@ -22,7 +28,7 @@ For GitHub API workflows, create the branch from the current `master` commit and
 
 ## 2. Retrieve the clean binary directly to disk
 
-For a short-lived media URL, generate a fresh signed URL immediately before downloading. Do not reuse an expired URL.
+The original image must be received directly from Gopi via Telegram or the original media source. For a short-lived media URL, generate a fresh signed URL immediately before downloading. Do not reuse an expired URL.
 
 ```sh
 rm -f /tmp/image.jpeg
@@ -30,9 +36,13 @@ curl --fail -sS -L "<fresh-signed-url>" -o /tmp/image.jpeg
 wc -c /tmp/image.jpeg
 ```
 
-`--fail` is important: it prevents an HTTP error page from being saved as the image. Confirm the command succeeds and record the exact byte count.
+`--fail` is important: it prevents an HTTP error page from being saved as the image. Confirm the command succeeds and record the exact byte count. The file must be saved directly as binary; do not route it through a text variable, stdout, or a UTF-8 read.
 
-## 3. Create an ASCII base64 file
+## 3. Verify the original binary
+
+Before encoding or uploading, verify the original file directly. A clean JPEG must begin with SOI bytes `FF D8 FF E0` (at minimum `FF D8 FF`). Record the exact `wc -c` byte count. Also verify that it contains no NUL-related or replacement-text artifact caused by a previous text conversion; use byte-safe file operations rather than inspecting binary stdout.
+
+## 4. Create an ASCII base64 file
 
 Use the shell encoder to read the binary and write only ASCII base64 to a file:
 
@@ -51,7 +61,7 @@ tail -c 8 /tmp/image_b64.txt
 
 Never echo raw binary bytes to stdout. Never concatenate raw base64 into JSON with shell `printf` or `cat`; line wrapping, quoting, and stdout conversion can corrupt the request.
 
-## 4. Upload with GitHub Contents API
+## 5. Upload with GitHub Contents API
 
 Use `js-exec` and `fetch`. Read the already-generated ASCII file as text. Do not read the image as UTF-8 text and do not use `buf.toString('base64')` when the buffer has already passed through a mangling text path.
 
@@ -65,38 +75,19 @@ const sourceBytes = fs.statSync(imagePath).size;
 const branch = 'docs-or-fix-branch-name';
 const api = 'https://api.github.com/repos/aurounplugged-hue/gc-solar-projects/contents/images/projects/image.jpeg';
 
-// Get the current blob SHA for an update.
-const currentResponse = await fetch(`${api}?ref=${branch}`, {
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'User-Agent': 'gc-solar-projects-binary-upload',
-    Accept: 'application/vnd.github.v3+json'
-  }
-});
+const currentResponse = await fetch(`${api}?ref=${branch}`, { headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'gc-solar-projects-binary-upload', Accept: 'application/vnd.github.v3+json' } });
 const current = await currentResponse.json();
 if (!currentResponse.ok) throw new Error(JSON.stringify(current));
 
 const response = await fetch(api, {
   method: 'PUT',
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'User-Agent': 'gc-solar-projects-binary-upload',
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    message: 'fix: restore clean binary for image.jpeg',
-    content,
-    branch,
-    sha: current.sha
-  })
+  headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'gc-solar-projects-binary-upload', Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+  body: JSON.stringify({ message: 'fix: restore clean binary for image.jpeg', content, branch, sha: current.sha })
 });
 const result = await response.json();
 if (!response.ok) throw new Error(JSON.stringify(result));
-if (result.content.size !== sourceBytes) {
-  throw new Error(`size mismatch: source=${sourceBytes}, GitHub=${result.content.size}`);
-}
-console.log(JSON.stringify({sourceBytes, githubSize: result.content.size, blobSha: result.content.sha}));
+if (result.content.size !== sourceBytes) throw new Error(`size mismatch: source=${sourceBytes}, GitHub=${result.content.size}`);
+console.log(JSON.stringify({ sourceBytes, githubSize: result.content.size, blobSha: result.content.sha }));
 ```
 
 Run it with:
@@ -107,9 +98,9 @@ js-exec upload-image.js
 
 The API response must report a GitHub blob size equal to the original `wc -c` result. Save the returned blob SHA.
 
-## 5. Verify the resulting GitHub blob
+## 6. Fetch and verify the GitHub blob
 
-Fetch the file from the branch through the GitHub Contents API and inspect the returned base64 without decoding it through stdout:
+Fetch the resulting blob back through the GitHub API. Do not merely check that it starts with JPEG headers. Verify the returned bytes directly against the original file, byte for byte, by comparing exact size and SHA-256 (or an equivalent byte-accurate digest) of the original and the decoded GitHub content. The comparison must pass before continuing.
 
 ```js
 const response = await fetch(`${api}?ref=${branch}`, { headers });
@@ -118,36 +109,48 @@ const githubBase64 = file.content.replace(/\n/g, '');
 if (file.size !== sourceBytes) throw new Error('GitHub byte count mismatch');
 if (!githubBase64.startsWith('/9j/')) throw new Error('GitHub blob is not a JPEG');
 if (githubBase64.includes('77+9')) throw new Error('replacement-byte signature found');
-console.log({size: file.size, sha: file.sha, header: githubBase64.slice(0, 20)});
+// Decode githubBase64 with a byte-safe decoder and compare its SHA-256 and byte count to the original file.
+console.log({ size: file.size, sha: file.sha, header: githubBase64.slice(0, 20) });
 ```
 
 The post-upload checks must confirm:
 
-- GitHub size equals the source byte count.
-- The returned SHA is recorded.
-- Base64 starts with `/9j/`.
-- There are zero occurrences of `77+9`.
-- The decoded binary has JPEG SOI `FF D8 FF` and EOI `FF D9` when checked with a byte-safe file tool, not mangled stdout.
+- GitHub size equals the original byte count.
+- The decoded GitHub bytes have the same SHA-256 as the original file.
+- The returned GitHub blob SHA is recorded.
+- Base64 starts with `/9j/` and has zero occurrences of `77+9`.
+- The decoded binary has JPEG SOI `FF D8 FF` and EOI `FF D9` when checked with byte-safe file operations, not mangled stdout.
 
-## 6. Repository and PR checks
+## 7. Ten-step lifecycle gate
+
+The complete lifecycle is:
+
+1. Original image: receive it directly from Gopi via Telegram.
+2. Direct binary save: save the received content directly to disk.
+3. Verify the original binary: confirm SOI `FF D8 FF E0` and record `wc -c`.
+4. Safe shell base64 encode: `base64 -w 0 file > b64.txt`.
+5. Upload to GitHub through the Contents API.
+6. Fetch the GitHub blob back through the API.
+7. Verify GitHub blob bytes directly against the original file, byte-for-byte, using matching size and SHA comparison; JPEG-header checks alone are insufficient.
+8. Only after that verification passes, commit the change and cut the PR.
+9. Run CI and Cloudflare/deploy-preview checks.
+10. Verify the live site on Cloudflare Pages.
+
+A failed gate stops the workflow. Never proceed to the next gate on matching filenames or matching JPEG headers alone.
+
+## 8. Repository and PR checks
 
 Before presenting the PR:
 
 ```sh
 wc -c path/to/every-changed-file
- git diff --stat
+git diff --stat
 ```
 
 For image-only changes, the diff is a binary-file change with no meaningful text additions or deletions. For any changed HTML, CSS, Markdown, or configuration file, also verify valid UTF-8 and zero NUL bytes. For HTML files, verify the expected `<!doctype html>` through `</html>` tags. Validate `_headers` syntax when `_headers` is changed.
 
-The PR must include:
+The PR must include exact byte counts, exact diff statistics, original-versus-GitHub byte verification, CI/check status, and the Cloudflare Pages or deploy-preview URL.
 
-- Exact byte count for every changed file.
-- Exact `git diff --stat` output, including additions and deletions.
-- Binary verification results for each JPEG.
-- CI/check status.
-- Cloudflare Pages or deploy-preview URL, if provided by the deployment checks.
-
-## 7. Approval and merge policy
+## 9. Approval and merge policy
 
 Open a pull request from the dedicated branch to `master`. Never merge automatically. ipoG must give explicit approval after reviewing the PR, byte counts, diff, checks, and preview. Only then merge the PR through GitHub API, and verify the resulting `master` commit SHA and branch status.
