@@ -1,16 +1,32 @@
 name: Verify site integrity
+
 on:
-  push:
-    branches: [master, ci-integrity-guardrails]
   pull_request:
     branches: [master]
+  push:
+    branches: [master]
+
 permissions:
   contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history needed for the shrink-guard diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Pillow (image decode checks)
+        run: pip install Pillow
+
       - name: Run integrity guardrails
-        run: python3 scripts/verify_site.py
+        env:
+          ALLOW_SHRINK: ${{ contains(github.event.pull_request.labels.*.name, 'allow-shrink') && '1' || '0' }}
+        run: python3 scripts/verify_site.py --base origin/${{ github.base_ref || 'master' }}
