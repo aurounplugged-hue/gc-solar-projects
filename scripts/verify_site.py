@@ -49,7 +49,10 @@ for name in ("index.html", "projects.html"):
         local = target.split("?", 1)[0].split("#", 1)[0]
         if local == "/": local = "index.html"
         elif local.startswith("/"): local = local[1:]
-        if local and not (root / local).exists(): fail(f"{name} local target missing: {target}")
+        target_path = root / local
+        html_path = target_path.with_suffix(".html") if not target_path.suffix else None
+        if local and not target_path.exists() and not (html_path and html_path.is_file()):
+            fail(f"{name} local target missing: {target}")
 
 if errors:
     print("\n".join("FAIL: " + error for error in errors)); sys.exit(1)
