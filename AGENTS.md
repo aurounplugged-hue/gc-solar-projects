@@ -11,6 +11,7 @@ Strict rule: NEVER invoke or route to Devin for `aurounplugged-hue/gc-solar-proj
 ## Required workflow for all contributors and AI tools
 - Treat these instructions as mandatory, including Codex, Copilot, and other AI coding agents. Read this file before changing the repository; also follow `.github/copilot-instructions.md` where applicable.
 - Never commit or push directly to `master`. Create a dedicated `feature/...` or `fix/...` branch, open a pull request targeting `master`, validate the Cloudflare Pages preview, and merge only through the approved PR workflow.
+- After Codex finishes pushing a branch and creating a PR, Codex MUST print the Cloudflare Pages preview URL directly in its chat/terminal output alongside the PR link. Use `https://<sanitized-branch-name>.gcsolarprojects.pages.dev` as the proposed URL pattern only when verified; otherwise print the exact Cloudflare deployment URL. Never invent, imply, or claim a preview URL has been validated unless confirmed; the user needs a directly clickable URL without opening GitHub or checking email.
 - Keep changes narrowly scoped. Do not modify unrelated files or overwrite existing assets without verifying their source and integrity.
 - Before merging, deploy/use the Cloudflare Pages preview for the pull request and inspect the changed pages/assets. Do not claim preview validation unless it was actually performed.
 
