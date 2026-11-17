@@ -10,9 +10,9 @@ Strict rule: NEVER invoke or route to Devin for `aurounplugged-hue/gc-solar-proj
 
 ## Required workflow for all contributors and AI tools
 - Treat these instructions as mandatory, including Codex, Copilot, and other AI coding agents. Read this file before changing the repository; also follow `.github/copilot-instructions.md` where applicable.
-- Never commit or push directly to `master`. Create a dedicated `feature/...` or `fix/...` branch and submit a pull request targeting `master`.
+- Never commit or push directly to `master`. Create a dedicated `feature/...` or `fix/...` branch, open a pull request targeting `master`, validate the Cloudflare Pages preview, and merge only through the approved PR workflow.
 - Keep changes narrowly scoped. Do not modify unrelated files or overwrite existing assets without verifying their source and integrity.
-- Before merging, deploy/use the Cloudflare Pages preview for the pull request and inspect the changed pages/assets there. Do not claim preview validation unless it was actually performed.
+- Before merging, deploy/use the Cloudflare Pages preview for the pull request and inspect the changed pages/assets. Do not claim preview validation unless it was actually performed.
 
 ## Binary and image integrity
 - Project images belong under `images/projects/` and references must use the correct existing path/case.
@@ -22,13 +22,14 @@ Strict rule: NEVER invoke or route to Devin for `aurounplugged-hue/gc-solar-proj
 ## HTML integrity and project-page conventions
 - HTML files must be valid UTF-8, contain no NUL bytes, and have one complete document from `<!doctype html>` through the closing `</html>`.
 - In `projects.html`, each portfolio tile must retain the established `<div class="wall-tile">` structure and its expected nesting, links, and image references. Inspect neighboring tiles before adding or changing one.
-- Whenever a new site is added, automatically increase the total installed kW capacity count in `index.html` and update any other capacity mentions throughout the site. Recalculate from verified project capacity data; keep all displayed totals consistent. When removing a site or correcting its capacity, recalculate and update those mentions as well.
+- Whenever a new site/project is added, update the total installed kW capacity counter in `index.html` and update any other capacity mentions throughout the site. Recalculate from verified project capacity data and keep all displayed totals consistent. Recalculate after removing a site or correcting its capacity.
+- Project categorization on `projects.html`: projects below 10 kW belong in the smaller/distributed projects section `#distributed` (“Distributed Solar & Field Infrastructure”); projects of 10 kW or more belong in the bigger/commercial & industrial section `#commercial-industrial` (“Commercial & Industrial Deployments”). Verify capacity and place each project in the correct section.
 - Preserve the site's existing design, responsive behavior, accessibility, and factual claims; check all affected links and image paths.
 
 ## Verification checklist
 1. Review the complete diff and confirm only intended files changed.
 2. Check exact byte counts for every changed/new file and every added/replaced binary; all binaries must be non-zero.
 3. Verify changed HTML is UTF-8, has zero NUL bytes, and has one `<!doctype html>` ... `</html>` document.
-4. For project tiles, verify the required `wall-tile` structure; whenever a site is added, verify the total installed kW count in `index.html` and every other capacity mention is updated using verified capacity data. Recalculate after site removals or capacity corrections.
+4. For project tiles, verify the required `wall-tile` structure; for every added project verify the correct section by the 10 kW threshold, and update the `index.html` capacity counter and every other capacity mention using verified project data.
 5. Test the deployed Cloudflare Pages PR preview before merging and record the preview URL and checks performed in the PR.
 6. Merge only through the approved pull-request workflow; never bypass repository protections.
