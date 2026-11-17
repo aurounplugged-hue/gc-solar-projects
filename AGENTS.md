@@ -5,5 +5,30 @@ Strict rule: NEVER invoke or route to Devin for `aurounplugged-hue/gc-solar-proj
 
 ## Protocol Requirements
 1. Never push directly to master. All changes must use a dedicated feature or fix branch and a Pull Request.
-2. Verify exact byte counts (`wc -c`), `git diff --stat`, valid UTF-8, zero NUL bytes, valid single HTML structure, and Cloudflare Pages preview.
+2. Verify exact byte counts (`wc -c`), valid UTF-8, zero NUL bytes, valid single HTML structure, and Cloudflare Pages preview.
 3. Factual credibility: absolute factual accuracy on solar capacities and O&M.
+
+## Required workflow for all contributors and AI tools
+- Treat these instructions as mandatory, including Codex, Copilot, and other AI coding agents. Read this file before changing the repository; also follow `.github/copilot-instructions.md` where applicable.
+- Never commit or push directly to `master`. Create a dedicated `feature/...` or `fix/...` branch and submit a pull request targeting `master`.
+- Keep changes narrowly scoped. Do not modify unrelated files or overwrite existing assets without verifying their source and integrity.
+- Before merging, deploy/use the Cloudflare Pages preview for the pull request and inspect the changed pages/assets there. Do not claim preview validation unless it was actually performed.
+
+## Binary and image integrity
+- Project images belong under `images/projects/` and references must use the correct existing path/case.
+- Before adding or replacing an image/binary, verify its provenance, format, non-zero byte size, and exact byte count (`wc -c`). Confirm the resulting repository asset's byte count after transfer; never trust a reported upload size alone.
+- Do not rename, recompress, convert, or otherwise alter existing binary assets unless explicitly required. Never introduce zero-byte, truncated, placeholder, or text-corrupted binary files.
+
+## HTML integrity and project-page conventions
+- HTML files must be valid UTF-8, contain no NUL bytes, and have one complete document from `<!doctype html>` through the closing `</html>`.
+- In `projects.html`, each portfolio tile must retain the established `<div class="wall-tile">` structure and its expected nesting, links, and image references. Inspect neighboring tiles before adding or changing one.
+- When adding or removing a project, update the displayed project capacity/count in `index.html` consistently with the actual portfolio. Do not change the count for unrelated edits.
+- Preserve the site's existing design, responsive behavior, accessibility, and factual claims; check all affected links and image paths.
+
+## Verification checklist
+1. Review the complete diff and confirm only intended files changed.
+2. Check exact byte counts for every changed/new file and every added/replaced binary; all binaries must be non-zero.
+3. Verify changed HTML is UTF-8, has zero NUL bytes, and has one `<!doctype html>` ... `</html>` document.
+4. For project tiles, verify the required `wall-tile` structure; for portfolio additions/removals, verify the `index.html` capacity/count.
+5. Test the deployed Cloudflare Pages PR preview before merging and record the preview URL and checks performed in the PR.
+6. Merge only through the approved pull-request workflow; never bypass repository protections.
