@@ -22,13 +22,13 @@ Strict rule: NEVER invoke or route to Devin for `aurounplugged-hue/gc-solar-proj
 ## HTML integrity and project-page conventions
 - HTML files must be valid UTF-8, contain no NUL bytes, and have one complete document from `<!doctype html>` through the closing `</html>`.
 - In `projects.html`, each portfolio tile must retain the established `<div class="wall-tile">` structure and its expected nesting, links, and image references. Inspect neighboring tiles before adding or changing one.
-- When adding or removing a project, update the displayed project capacity/count in `index.html` consistently with the actual portfolio. Do not change the count for unrelated edits.
+- Whenever a new site is added, automatically increase the total installed kW capacity count in `index.html` and update any other capacity mentions throughout the site. Recalculate from verified project capacity data; keep all displayed totals consistent. When removing a site or correcting its capacity, recalculate and update those mentions as well.
 - Preserve the site's existing design, responsive behavior, accessibility, and factual claims; check all affected links and image paths.
 
 ## Verification checklist
 1. Review the complete diff and confirm only intended files changed.
 2. Check exact byte counts for every changed/new file and every added/replaced binary; all binaries must be non-zero.
 3. Verify changed HTML is UTF-8, has zero NUL bytes, and has one `<!doctype html>` ... `</html>` document.
-4. For project tiles, verify the required `wall-tile` structure; for portfolio additions/removals, verify the `index.html` capacity/count.
+4. For project tiles, verify the required `wall-tile` structure; whenever a site is added, verify the total installed kW count in `index.html` and every other capacity mention is updated using verified capacity data. Recalculate after site removals or capacity corrections.
 5. Test the deployed Cloudflare Pages PR preview before merging and record the preview URL and checks performed in the PR.
 6. Merge only through the approved pull-request workflow; never bypass repository protections.
